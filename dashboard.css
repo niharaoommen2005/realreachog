@@ -1,0 +1,210 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background: url("collage.jpg") no-repeat center center/cover;
+  min-height: 100vh;
+  color: #fff;
+  position: relative;
+}
+
+/* Dark overlay for readability */
+body::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.8);
+  z-index: 0;
+}
+
+/* Navbar */
+.navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  z-index: 10;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  height: 45px;
+  margin-right: 10px;
+}
+
+.logo h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #ff9800;
+}
+
+/* Profile dropdown */
+.profile {
+  position: relative;
+}
+
+.profile img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid #ff9800;
+}
+
+.dropdown {
+  display: none;
+  position: absolute;
+  top: 60px;
+  right: 0;
+  background: #fff;
+  color: #333;
+  border-radius: 8px;
+  padding: 15px;
+  min-width: 200px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+.dropdown p {
+  margin: 5px 0;
+  font-size: 0.9rem;
+}
+
+.logout-link {
+  color: #ff9800;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.profile:hover .dropdown {
+  display: block;
+}
+
+/* Dashboard Layout */
+.dashboard {
+  position: relative;
+  z-index: 1;
+  padding: 120px 50px 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+}
+
+.section {
+  text-align: center;
+}
+
+.section h2 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  color: #087555;
+}
+
+/* Options row */
+.options {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+/* Option Cards */
+.option-card {
+  background: linear-gradient(135deg, #ff9800, #da6541);
+  padding: 20px 25px;
+  border-radius: 12px;
+  cursor: pointer;
+  opacity: 0.75;
+  transition: 0.3s ease;
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  flex: 1;
+  min-width: 180px;
+  text-align: center;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.option-card:hover {
+  background: linear-gradient(135deg, #ff5722, #ff9800);
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+}
+
+/* Option Icons */
+.option-card i {
+  font-size: 28px;
+  color: #fff;
+}
+
+/* Profile Dropdown (formal) */
+.dropdown {
+  display: none;
+  position: absolute;
+  top: 55px;
+  right: 0;
+  background: #fff;
+  color: #333;
+  border-radius: 8px;
+  padding: 15px;
+  min-width: 230px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  font-size: 0.95rem;
+}
+
+.dropdown .profile-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.dropdown .profile-header img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: 2px solid #ff9800;
+}
+
+.dropdown .profile-info p {
+  margin: 2px 0;
+  font-weight: 500;
+}
+
+.dropdown hr {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 10px 0;
+}
+
+.dropdown a {
+  display: block;
+  padding: 8px 0;
+  text-decoration: none;
+  color: #ff5722;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.dropdown a:hover {
+  color: #ff9800;
+}
+
+/* Show dropdown on hover */
+.profile:hover .dropdown {
+  display: block;
+}

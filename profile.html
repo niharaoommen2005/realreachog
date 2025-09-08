@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create NGO Profile</title>
+  <link rel="stylesheet" href="profile.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+  <section class="form-section">
+    <div class="form-container">
+      <h2><i class="fas fa-hand-holding-heart"></i> Create Your NGO Profile</h2>
+      <p class="subtitle">Showcase your NGO and build trust with supporters</p>
+      
+      <form class="ngo-form" enctype="multipart/form-data">
+        
+        <!-- Basic Info -->
+        <div class="form-group">
+          <label for="ngoName"><i class="fas fa-building"></i> NGO Name <span>*</span></label>
+          <input type="text" id="ngoName" name="ngoName" placeholder="Enter your NGO name" required>
+        </div>
+
+        <div class="form-group">
+          <label for="regNumber"><i class="fas fa-id-card"></i> Registration Number <span>*</span></label>
+          <input type="text" id="regNumber" name="regNumber" placeholder="Official registration ID" required>
+        </div>
+
+        <div class="form-group file-upload">
+          <label for="logo"><i class="fas fa-image"></i> Upload Logo</label>
+          <input type="file" id="logo" name="logo" accept="image/*">
+        </div>
+
+        <!-- Contact Info -->
+        <div class="form-group">
+          <label for="email"><i class="fas fa-envelope"></i> Email <span>*</span></label>
+          <input type="email" id="email" name="email" placeholder="contact@ngo.org" required>
+        </div>
+
+        <div class="form-group">
+          <label for="phone"><i class="fas fa-phone"></i> Phone <span>*</span></label>
+          <input type="tel" id="phone" name="phone" placeholder="+91-9876543210" required>
+        </div>
+
+        <div class="form-group">
+          <label for="address"><i class="fas fa-map-marker-alt"></i> Address <span>*</span></label>
+          <textarea id="address" name="address" rows="3" placeholder="Enter full address" required></textarea>
+        </div>
+
+        <!-- Mission -->
+        <div class="form-group">
+          <label for="mission"><i class="fas fa-bullseye"></i> Mission Statement <span>*</span></label>
+          <textarea id="mission" name="mission" rows="4" placeholder="Describe your mission" required></textarea>
+        </div>
+
+        <!-- Causes -->
+        <fieldset class="form-group causes">
+          <legend><i class="fas fa-handshake-angle"></i> Causes Supported:</legend>
+          <label><input type="checkbox" name="causes" value="education"> Education</label>
+          <label><input type="checkbox" name="causes" value="health"> Health</label>
+          <label><input type="checkbox" name="causes" value="environment"> Environment</label>
+          <label><input type="checkbox" name="causes" value="women"> Women Empowerment</label>
+          <label><input type="checkbox" name="causes" value="poverty"> Poverty Alleviation</label>
+          <label><input type="checkbox" name="causes" value="animals"> Animal Welfare</label>
+        </fieldset>
+
+        <!-- Links -->
+        <div class="form-group">
+          <label for="website"><i class="fas fa-globe"></i> Website</label>
+          <input type="url" id="website" name="website" placeholder="https://yourngo.org">
+        </div>
+
+        <div class="form-group">
+          <label for="socials"><i class="fab fa-facebook"></i> Social Media Links</label>
+          <input type="url" id="socials" name="socials" placeholder="https://facebook.com/yourngo">
+        </div>
+
+        <!-- Verification -->
+        <div class="form-group file-upload">
+          <label for="verification"><i class="fas fa-file-upload"></i> Upload Verification Document <span>*</span></label>
+          <input type="file" id="verification" name="verification" accept=".pdf,.jpg,.jpeg,.png" required>
+          <small>Upload govt. registration certificate or equivalent.</small>
+        </div>
+
+        <!-- Submit -->
+        <div class="form-group submit-btn">
+          <button type="submit"><i class="fas fa-check-circle"></i> Submit Profile</button>
+        </div>
+
+      </form>
+    </div>
+  </section>
+
+</body>
+</html>

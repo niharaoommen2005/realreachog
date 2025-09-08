@@ -1,0 +1,141 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #f8f9fc;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+.form-section {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 50px 20px;
+}
+
+.form-container {
+  background: #fff;
+  padding: 40px 35px;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  max-width: 800px;
+  width: 100%;
+  border-top: 4px solid #ff9800;
+}
+
+.form-container h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 8px;
+  color: #ff9800;
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 25px;
+}
+
+.ngo-form .form-group {
+  margin-bottom: 18px;
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #333;
+}
+
+label span {
+  color: #ff4c4c;
+}
+
+input, textarea {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 1rem;
+  background: #fafafa;
+  color: #333;
+  transition: all 0.2s ease;
+}
+
+input:focus, textarea:focus {
+  border-color: #10a276;
+  box-shadow: 0 0 6px rgba(16,162,118,0.4);
+  outline: none;
+}
+
+fieldset.causes {
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 14px;
+  background: #fafafa;
+}
+legend {
+  padding: 0 8px;
+  font-weight: bold;
+  color: #ff9800;
+}
+.causes label {
+  margin-right: 18px;
+  font-weight: normal;
+  display: inline-block;
+  margin-top: 6px;
+}
+
+/* Stylish file input */
+.file-upload input[type="file"] {
+  display: none;
+}
+.file-upload label {
+  display: inline-block;
+  background: linear-gradient(135deg, #ff9800, #10a276);
+  color: #fff;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.file-upload label:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+.file-upload small {
+  display: block;
+  margin-top: 5px;
+  color: #777;
+  font-size: 0.85rem;
+}
+
+/* Submit button */
+.submit-btn {
+  text-align: center;
+}
+button {
+  background: linear-gradient(135deg, #ff9800, #10a276);
+  color: #fff;
+  font-size: 1rem;
+  padding: 14px 32px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+button i { margin-right: 8px; }
+button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .form-container { padding: 25px 20px; }
+  .form-container h2 { font-size: 1.5rem; }
+}

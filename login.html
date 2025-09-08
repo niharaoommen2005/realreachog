@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | RealReach</title>
+  <link rel="stylesheet" href="login.css">
+</head>
+<body>
+  <!-- Background Overlay -->
+  <div class="overlay"></div>
+    <header class="navbar">
+    <div class="logo">
+      <img src="logo.png" alt="Logo">
+      <h1>RealReach</h1>
+    </div>
+  </header>
+  <!-- Auth Box -->
+  <div class="auth-container">
+    <h1>Welcome Back!</h1>
+    <p>Please log in to continue</p>
+
+    <form id="loginForm">
+      <input type="email" id="email" placeholder="Email" required>
+      <input type="password" id="password" placeholder="Password" required>
+      <button type="submit" class="submit-btn">Login</button>
+    </form>
+
+    <!-- Error Message -->
+    <div id="errorBox" class="error-box" style="display: none;"></div>
+  </div>
+
+  <script>
+    document.getElementById("loginForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const data = {
+        email: document.getElementById("email").value,
+        password: document.getElementById("password").value,
+      };
+
+      const errorBox = document.getElementById("errorBox");
+      errorBox.style.display = "none"; // reset before new attempt
+
+      try {
+        const res = await fetch("http://localhost:4000/login/user-auth", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data),
+        });
+
+        const result = await res.json();
+        if (res.ok) {
+          localStorage.setItem("token", result.token); 
+          window.location.href = "dashboard.html"; 
+        } else {
+          errorBox.textContent = result.error || "Invalid email or password.";
+          errorBox.style.display = "block";
+        }
+      } catch (err) {
+        errorBox.textContent = "Something went wrong! Try again.";
+        errorBox.style.display = "block";
+        console.error(err);
+      }
+    });
+  </script>
+</body>
+</html>
