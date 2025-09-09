@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1757369487728,
+    "item": "Pickle",
+    "category": "Food",
+    "description": "pickle",
+    "phone": "9606149532",
+    "image": "/uploads/1757369487713-cous.jpg"
+  },
+  {
+    "id": 1757369606744,
+    "item": "clothes",
+    "category": "Clothes",
+    "description": "7-10 year old",
+    "phone": "9449040533",
+    "image": "/uploads/1757369606738-me.jpg"
+  }
+]
