@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Add Donation - Help Your Community</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: url('places/background.jpg') no-repeat center center fixed;
+      background-size: cover;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1 {
+      margin: 20px 0;
+      color: white;
+      text-shadow: 1px 1px 5px rgba(0,0,0,0.7);
+      text-align: center;
+    }
+
+    #donation-form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      width: 90%;
+      max-width: 500px;
+      background: rgba(255,255,255,0.95);
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+      margin-bottom: 50px;
+    }
+
+    label {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    input, select, textarea, button {
+      padding: 10px;
+      font-size: 1rem;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    textarea { resize: vertical; }
+
+    button {
+      background-color: #ff8800;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: 0.2s;
+      margin-top: 10px;
+    }
+
+    button:hover { background-color: #b35a00; }
+
+    .donation-list {
+      width: 90%;
+      max-width: 900px;
+      background: rgba(255,255,255,0.95);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+      max-height: 500px;
+      overflow-y: auto;
+      margin-bottom: 50px;
+    }
+
+    .donation-item {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      border-bottom: 1px solid #ddd;
+      padding: 15px 0;
+      align-items: flex-start;
+    }
+
+    .donation-text {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      flex: 1;
+    }
+
+    .donation-text button {
+      align-self: flex-start;
+      margin-top: 8px;
+    }
+
+    .donation-item img {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 5px;
+      flex-shrink: 0;
+    }
+
+    .description-box {
+      border: 1px solid #ccc;
+      padding: 5px;
+      border-radius: 5px;
+      background: #f9f9f9;
+      max-height: 80px;
+      overflow-y: auto;
+    }
+
+    .filter-bar {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .filter-bar button {
+      background: #ff9d00;
+      border: none;
+      color: white;
+      padding: 8px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .filter-bar button:hover { background: #b37100; }
+  </style>
+</head>
+<body>
+
+<h1>Add Donation</h1>
+
+<form id="donation-form" enctype="multipart/form-data">
+  <label>Item Name</label>
+  <input type="text" id="itemName" name="itemName" placeholder="Enter item name" required>
+
+  <label>Category</label>
+  <select id="category" name="category" required>
+    <option value="" disabled selected>Select Category</option>
+    <option value="Food">Food</option>
+    <option value="Books">Books</option>
+    <option value="Clothes">Clothes</option>
+    <option value="Other">Other</option>
+  </select>
+
+  <label>Description</label>
+  <textarea id="description" name="description" rows="3" placeholder="Enter description" required></textarea>
+
+  <label>Upload Image</label>
+  <input type="file" id="image" name="image" accept="image/*" required>
+
+  <label>Phone Number</label>
+  <input type="tel" id="phone" name="phone" placeholder="Enter phone number" required>
+
+  <button type="submit">Submit Donation</button>
+</form>
+
+<h1>Available Donations</h1>
+<div class="filter-bar">
+  <button onclick="filterDonations('All')">All</button>
+  <button onclick="filterDonations('Food')">Food</button>
+  <button onclick="filterDonations('Books')">Books</button>
+  <button onclick="filterDonations('Clothes')">Clothes</button>
+  <button onclick="filterDonations('Other')">Other</button>
+</div>
+
+<div class="donation-list" id="donation-list"></div>
+
+<script src="script.js"></script>
+
+<script>
+  const form = document.getElementById('donation-form');
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const formData = new FormData(form);
+    try {
+      const res = await fetch('http://localhost:4000/add-donation', {
+        method: 'POST',
+        body: formData
+      });
+      if (!res.ok) throw new Error('Error submitting donation');
+      await res.json();
+      alert('Donation added successfully!');
+      form.reset();
+      fetchDonations(); // refresh list
+    } catch (err) {
+      console.error(err);
+      alert('Error submitting donation. Please try again.');
+    }
+  });
+</script>
+
+</body>
+</html>

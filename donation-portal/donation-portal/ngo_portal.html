@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>NGO Portal - Help Your Community</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Available Donations</h1>
+
+  <div class="filter-bar">
+    <button onclick="filterDonations('All')">All</button>
+    <button onclick="filterDonations('Food')">Food</button>
+    <button onclick="filterDonations('Books')">Books</button>
+    <button onclick="filterDonations('Clothes')">Clothes</button>
+    <button onclick="filterDonations('Other')">Other</button>
+  </div>
+
+  <div class="donation-list" id="donation-list"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
