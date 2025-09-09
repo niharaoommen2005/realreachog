@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Help Your Community!</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <style>
+    /* Horizontal city row styling */
+    .city-row {
+  display: flex;
+  justify-content: center;   /* center the whole row */
+  gap: 2px;                  /* small gap between images */
+  padding: 4px;
+  background: #fff;          /* white background for row */
+}
+
+.city-card {
+  border: 1px solid #000;    /* thin black border */
+  border-radius: 0px;        /* subtle rounding */
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  flex: 0 0 auto;
+  width: 80px;               /* same as image width */
+  height: 100px; 
+}
+
+.city-card:hover {
+  transform: scale(1.05);    /* small hover zoom */
+}
+
+.city-card img {
+  width: 80px;              /* same width for all images */
+  height: 100px;             /* same height */
+  object-fit: cover;         /* crop neatly */
+  display: block;
+}
+
+
+    
+    .overlay {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      background: rgba(0,0,0,0.5);
+      color: white;
+      text-align: center;
+      padding: 0px 0;
+    }
+
+    .overlay h3 {
+      margin: 0;
+      font-size: 1rem;
+    }
+
+    /* Map styling */
+    #map {
+      width: 100%;
+      height: 500px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Help Your Community!</h1>
+  <!-- City Selection Row -->
+  <div id="city-selection" class="city-row">
+    <div class="city-card" data-lat="12.9716" data-lng="77.5946" data-zoom="12">
+      <img src="places/blr.jpg" alt="Bengaluru">
+      <div class="overlay"></div>
+    </div>
+    <div class="city-card" data-lat="13.0827" data-lng="80.2707" data-zoom="12">
+      <img src="places/chennai.jpg" alt="Chennai">
+      <div class="overlay"></div>
+    </div>
+
+    <div class="city-card" data-lat="28.6139" data-lng="77.2090" data-zoom="12">
+      <img src="places/delhi.jpg" alt="Delhi">
+      <div class="overlay"></div>
+    </div>
+
+    <div class="city-card" data-lat="9.9312" data-lng="76.2673" data-zoom="12">
+      <img src="places/kochi.jpg" alt="Kochi">
+      <div class="overlay"></div>
+    </div>
+  
+    <div class="city-card" data-lat="19.0760" data-lng="72.8777" data-zoom="12">
+      <img src="places/mumbai.jpg" alt="Mumbai">
+      <div class="overlay"></div>
+    </div>
+    <div class="city-card" data-lat="18.5204" data-lng="73.8567" data-zoom="12">
+      <img src="places/pune.jpg" alt="Pune">
+      <div class="overlay"></div>
+    </div>
+  </div>
+
+  <!-- Map Container -->
+  <div id="map"></div>
+
+  <!-- Script -->
+  <script src="script.js"></script>
+</body>
+</html>

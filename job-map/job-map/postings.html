@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Add Posting - Help Your Community</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      margin:0;
+      padding:0;
+      background: url("places/imagee.jpg") no-repeat center center fixed; /* 🔹 Background image */
+      background-size: cover;  /* Makes image cover full screen */
+    }
+
+    h1 { 
+      margin:20px; 
+      text-align:center; 
+      color: white; /* 🔹 So text is visible on background */
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.7); /* 🔹 Adds contrast */
+    }
+
+    #add-posting-form {
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      width:90%;
+      max-width:500px;
+      background:rgba(255,255,255,0.9); /* 🔹 Slight transparency */
+      padding:20px;
+      border-radius:10px;
+      margin-bottom:50px;
+      box-shadow:0 3px 8px rgba(0,0,0,0.4);
+    }
+
+    #add-posting-form input,
+    #add-posting-form select,
+    #add-posting-form button {
+      padding:8px;
+      font-size:1rem;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    #add-posting-form button {
+      background-color:#ff8800;
+      color:white;
+      border:none;
+      cursor:pointer;
+      transition:0.2s;
+    }
+
+    #add-posting-form button:hover {
+      background-color:#b35a00;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Volunteer Opportunities</h1>
+
+<form id="add-posting-form">
+  <input type="text" name="JobTitle" placeholder="Job Title" required>
+  <input type="text" name="Company" placeholder="Organization / NGO" required>
+  <input type="text" name="Type" placeholder="Type (e.g., Food Drive, Teaching)" required>
+  <input type="text" id="location" name="location" placeholder="Enter location (e.g., T. Nagar, Chennai)" required>
+  <input type="hidden" id="Latitude" name="Latitude">
+  <input type="hidden" id="Longitude" name="Longitude">
+  <button type="submit">Add Posting</button>
+</form>
+
+<script>
+const form = document.getElementById('add-posting-form');
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  const locationInput = document.getElementById('location').value;
+
+  // Geocode using OpenStreetMap Nominatim
+  const response = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(locationInput)}`);
+  const data = await response.json();
+
+  if (data.length === 0) {
+    alert('Location not found');
+    return;
+  }
+
+  // Fill hidden latitude and longitude
+  const lat = data[0].lat;
+  const lon = data[0].lon;
+  document.getElementById('Latitude').value = lat;
+  document.getElementById('Longitude').value = lon;
+
+  const formData = new FormData(form);
+  const newJob = Object.fromEntries(formData.entries());
+
+  // Send to backend
+  fetch('http://localhost:3000/add-job', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(newJob)
+  })
+  .then(res => res.json())
+  .then(job => {
+    form.reset();
+    alert('Job added successfully!');
+  })
+  .catch(err => console.error(err));
+});
+</script>
+
+</body>
+</html>
